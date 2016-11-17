@@ -16,22 +16,31 @@
 d3.json("data/county_loc.json", function(data) {
   var modData = [];
   var word = "";
+  var longitudes = ['x'];
+  var latitudes = ['y'];
   // console.log(data);
   data.forEach(function(d, i) {
-  	word += d.longitude.toString() + " : " + d.latitude.toString() + ",\n";
-    var item = [d.county, d.latitude, d.longitude];
-    modData.push(item);
+
+  	var indice = d.county + "_x"
+  	word += d.county + " : " + indice + ',\n';
+  	longitudes.push(d.longitude);
+  	latitudes.push(d.latitude);
+
+
   });
+
   var x;
-  console.log(word);
 
   
   var chart = c3.generate({
     data: {
       xs: {
-      	word	
+      	'y' : 'x'	
       },
-      columns: modData,
+      columns: [
+      	latitudes,
+      	longitudes
+      ],
       type: 'scatter'
     }
   });
