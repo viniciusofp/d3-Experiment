@@ -14,22 +14,18 @@
 
 
 d3.json("data/county_loc.json", function(data) {
-  var modData = [];
-  var word = "";
   var longitudes = ['x'];
   var latitudes = ['y'];
   // console.log(data);
   data.forEach(function(d, i) {
 
-  	var indice = d.county + "_x"
-  	word += d.county + " : " + indice + ',\n';
+
   	longitudes.push(d.longitude);
   	latitudes.push(d.latitude);
 
 
   });
 
-  var x;
 
   
   var chart = c3.generate({
